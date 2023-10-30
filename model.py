@@ -1,7 +1,11 @@
 import openai
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 
 # Initialize API client
-openai.api_key = 'YOUR_OPENAI_API_KEY'
+openai.api_key = os.getenv("OPEN_API_KEY")
 
 # Prepare your image
 with open("path_to_your_image.jpg", "rb") as f:
