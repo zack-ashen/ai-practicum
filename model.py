@@ -31,7 +31,7 @@ payload = {
         "content": [
           {
             "type": "text",
-            "text": "What’s in this image?"
+            "text": "This is a picture of a cooler with drinks in it. It has multiple rows. Every drink behind the first drink is the same. Identify the brand and type of drink for each can."
           },
           {
             "type": "image_url",
