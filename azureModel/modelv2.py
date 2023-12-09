@@ -1,3 +1,5 @@
+import os
+
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from azure.cognitiveservices.vision.computervision.models import \
     VisualFeatureTypes
@@ -7,8 +9,8 @@ from msrest.authentication import CognitiveServicesCredentials
 load_dotenv(dotenv_path="../.env")
 
 # Replace with your Azure subscription key and endpoint
-subscription_key = "019a83104dd640ffafd6bbe4b88dc938"
-endpoint = "https://aipracticum.cognitiveservices.azure.com/"
+subscription_key = os.getenv("AZURE_SUBSCRIPTION_KEY")
+endpoint = os.getenv("AZURE_ENDPOINT")
 
 # Create a Computer Vision client
 client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
