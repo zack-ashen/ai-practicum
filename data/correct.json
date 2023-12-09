@@ -27,5 +27,124 @@
       "Red Stripe"
     ]
   ],
-  "correctBrands2": []
+  "correctBrands2": [
+    [
+      "Starbucks",
+      "Starbucks",
+      "Starbucks",
+      "Starbucks",
+      "Starbucks",
+      "Starbucks",
+      "Starbucks",
+      "Starbucks"
+    ],
+    [
+      "Pure Leaf",
+      "Pure Leaf",
+      "Pure Leaf",
+      "Pure Leaf",
+      "Pure Leaf",
+      "Pure Leaf",
+      "Pure Leaf",
+      "Pure Leaf"
+    ],
+    ["Dole", "Dole", "Dole", "Dole", "Dole", "Dole", "Dole", "Dole"],
+    [
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade"
+    ],
+    [
+      "LIFE WTR",
+      "LIFE WTR",
+      "LIFE WTR",
+      "Aquafina",
+      "Aquafina",
+      "Aquafina",
+      "Aquafina",
+      "Aquafina",
+      "Aquafina"
+    ]
+  ],
+  "correctBrands3": [
+    [
+      "Rockstar",
+      "Rockstar",
+      "Rockstar",
+      "Rockstar",
+      "Rockstar",
+      "Celsius",
+      "Celsius",
+      "Celsius",
+      "Celsius"
+    ],
+    [
+      "Pepsi",
+      "Pepsi",
+      "Pepsi",
+      "Pepsi",
+      "Pepsi",
+      "Pepsi",
+      "Pepsi",
+      "Pepsi",
+      "Pepsi"
+    ],
+    [
+      "Starry",
+      "Starry",
+      "Starry",
+      "Starry",
+      "Mountain Dew",
+      "Mountain Dew",
+      "Mountain Dew",
+      "Mountain Dew"
+    ],
+    [
+      "Kickstart",
+      "Kickstart",
+      "Kickstart",
+      "Kickstart",
+      "Unknown",
+      "Unknown",
+      "LIFE WTR",
+      "LIFE WTR",
+      "LIFE WTR"
+    ],
+    [
+      "Aquafina",
+      "Aquafina",
+      "Aquafina",
+      "Aquafina",
+      "Aquafina",
+      "Aquafina",
+      "Aquafina",
+      "Aquafina",
+      "Aquafina"
+    ]
+  ],
+  "correctBrands4": [
+    ["Unkown", "Unkown", "Unkown", "Doritos", "Smartfood", "Ridges"],
+    ["Cheetos", "Fritos", "Doritos", "Lays", "Ruffles", "Sun Chips"],
+    ["Kit Kat", "Pop Tart", "Grandma", "Cheez It", "Chips Ahoy", "Unknown"],
+    ["Hersheys", "Chex", "Unknown", "Combos", "Pretzel Crisps", "Chex"],
+    ["Nerds", "Swedish Fish", "Twizzler", "Sour Patch", "Haribo", "Jack Links"],
+    [
+      "M & M",
+      "Reeses",
+      "Unknown",
+      "Almond Joy",
+      "Clif",
+      "Clif",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Hershey",
+      "M&M"
+    ]
+  ]
 }
