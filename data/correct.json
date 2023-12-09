@@ -1,0 +1,31 @@
+{
+  "correctBrands1": [
+    [
+      "Coca Cola",
+      "7UP",
+      "Unkown",
+      "Pabst Blue Ribbon",
+      "Cutwater",
+      "House Wine"
+    ],
+    [
+      "Aunt Sally",
+      "Guinness",
+      "Lone Star",
+      "Hanalei Island",
+      "Mango Mosaic",
+      "Poland Spring",
+      "Boylan"
+    ],
+    [
+      "Schweppes",
+      "Schweppes",
+      "Canada Dry",
+      "Red Bull",
+      "San Pellegrino",
+      "Unknown",
+      "Red Stripe"
+    ]
+  ],
+  "correctBrands2": []
+}
