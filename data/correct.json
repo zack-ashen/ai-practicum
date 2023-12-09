@@ -3,8 +3,9 @@
     [
       "Coca Cola",
       "7UP",
-      "Unkown",
+      "Unknown",
       "Pabst Blue Ribbon",
+      "Cutwater",
       "Cutwater",
       "House Wine"
     ],
@@ -128,7 +129,7 @@
     ]
   ],
   "correctBrands4": [
-    ["Unkown", "Unkown", "Unkown", "Doritos", "Smartfood", "Ridges"],
+    ["Unknown", "Unknown", "Unknown", "Doritos", "Smartfood", "Ridges"],
     ["Cheetos", "Fritos", "Doritos", "Lays", "Ruffles", "Sun Chips"],
     ["Kit Kat", "Pop Tart", "Grandma", "Cheez It", "Chips Ahoy", "Unknown"],
     ["Hersheys", "Chex", "Unknown", "Combos", "Pretzel Crisps", "Chex"],

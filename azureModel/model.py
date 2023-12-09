@@ -1,64 +1,33 @@
 import os
 
+from azure.cognitiveservices.vision.computervision import ComputerVisionClient
+from azure.cognitiveservices.vision.computervision.models import \
+    VisualFeatureTypes
+from dotenv import load_dotenv
+from msrest.authentication import CognitiveServicesCredentials
 
-##################################################################################################
-# In this section, we set the user authentication, user and app ID, model details, and the URL
-# of the image we want as an input. Change these strings to run your own example.
-#################################################################################################
+load_dotenv(dotenv_path="../.env")
 
-# Your PAT (Personal Access Token) can be found in the portal under Authentification
-PAT = os.environ.get('PAT')
-# Specify the correct user_id/app_id pairings
-# Since you're making inferences outside your app's scope
-USER_ID = 'clarifai'
-APP_ID = 'main'
-# Change these to whatever model and image URL you want to use
-MODEL_ID = 'logos-yolov5'
-MODEL_VERSION_ID = 'd4e85f4d37d24fdd9a1f04cca91a3510'
-IMAGE_URL = 'https://samples.clarifai.com/metro-north.jpg'
+# Replace with your Azure subscription key and endpoint
+subscription_key = os.getenv("AZURE_API_KEY")
+endpoint = os.getenv("AZURE_ENDPOINT")
 
-############################################################################
-# YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
-############################################################################
+# Create a Computer Vision client
+client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
 
-from clarifai_grpc.channel.clarifai_channel import ClarifaiChannel
-from clarifai_grpc.grpc.api import resources_pb2, service_pb2, service_pb2_grpc
-from clarifai_grpc.grpc.api.status import status_code_pb2
+# Define the path to your local image
+local_image_path = '../photos/drinks2.png'
 
-channel = ClarifaiChannel.get_grpc_channel()
-stub = service_pb2_grpc.V2Stub(channel)
+# Open the local image as a binary file
+with open(local_image_path, "rb") as image_stream:
+    # Analyze the image for brands
+    analysis = client.analyze_image_in_stream(image_stream, visual_features=[VisualFeatureTypes.brands])
 
-metadata = (('authorization', 'Key ' + PAT),)
+print(analysis)
 
-userDataObject = resources_pb2.UserAppIDSet(user_id=USER_ID, app_id=APP_ID)
-
-post_model_outputs_response = stub.PostModelOutputs(
-    service_pb2.PostModelOutputsRequest(
-        user_app_id=userDataObject,  # The userDataObject is created in the overview and is required when using a PAT
-        model_id=MODEL_ID,
-        version_id=MODEL_VERSION_ID,  # This is optional. Defaults to the latest model version
-        inputs=[
-            resources_pb2.Input(
-                data=resources_pb2.Data(
-                    image=resources_pb2.Image(
-                        url=IMAGE_URL
-                    )
-                )
-            )
-        ]
-    ),
-    metadata=metadata
-)
-if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
-    print(post_model_outputs_response.status)
-    raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
-
-# Since we have one input, one output will exist here
-output = post_model_outputs_response.outputs[0]
-
-print("Predicted concepts:")
-for concept in output.data.concepts:
-    print("%s %.2f" % (concept.name, concept.value))
-
-# Uncomment this line to print the full Response JSON
-#print(output)
+# Check if any brands were detected and print them
+if analysis.brands:
+    for brand in analysis.brands:
+        print(f"Brand: {brand.name}, Confidence: {brand.confidence}")
+else:
+    print("No brands detected.")
