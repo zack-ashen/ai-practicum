@@ -1,4 +1,13 @@
 {
+  "../photos2/image2.png": {
+    "correct": "correctBrands2",
+    "bounds": {
+      "x1": 0,
+      "y1": 0,
+      "x2": 6,
+      "y2": 1
+    }
+  },
   "../photos/drinks2.png": {
     "correct": "correctBrands1",
     "bounds": {
