@@ -331,5 +331,14 @@
       "x2": 8,
       "y2": 4
     }
+  },
+  "../ophotos/711_Beer.png": {
+    "correct": "correctBrands6",
+    "bounds": {
+      "x1": 0,
+      "y1": 0,
+      "x2": 4,
+      "y2": 4
+    }
   }
 }

@@ -196,5 +196,362 @@
       "Hershey",
       "M&M"
     ]
+  ],
+  "correctBrands6": [
+    [
+      "Blue Point",
+      "Juice Bomb IPA",
+      "Unknown",
+      "Brooklyn Brewery",
+      "Brooklyn Brewery"
+    ],
+    [
+      "Blue Point",
+      "Lagunitas",
+      "Great Lakes",
+      "Great Lakes",
+      "Allagash White"
+    ],
+    [
+      "Budweiser",
+      "Bud Light",
+      "Bud Light",
+      "Bud Light",
+      "Bud Light"
+    ],
+    [
+      "Budweiser",
+      "Budweiser",
+      "Bud Light",
+      "Bud Light",
+      "Bud Light",
+      "Pabst Blue Ribbon",
+      "Pabst Blue Ribbon",
+      "Pabst Blue Ribbon",
+      "Pabst Blue Ribbon",
+      "Pabst Blue Ribbon"
+    ],
+    [
+      "Milwaukees Best",
+      "Milwaukees Best",
+      "Yuengling",
+      "Yuengling",
+      "Yuengling",
+      "Yuengling",
+      "Miller High Life",
+      "Miller High Life",
+      "Miller High Life"
+    ]
+  ],
+  "correctBrands7": [
+    [
+      "Unknown",
+      "Unknown",
+      "Unknwon",
+      "Yerba Mate",
+      "Yerba Mate",
+      "Yerba Mate",
+      "Yerba Mate",
+      "Yerba Mate",
+      "Yerba Mate"
+    ],
+    [
+      "Unknown",
+      "ITO EN",
+      "ITO EN",
+      "ITO EN",
+      "ITO EN",
+      "ITO EN",
+      "ITO EN",
+      "ITO EN",
+      "ITO EN"
+    ],
+    [
+      "Pure Leaf",
+      "Pure Leaf",
+      "Pure Leaf",
+      "Pure Leaf",
+      "Pure Leaf",
+      "Pure Leaf",
+      "Pure Leaf",
+      "Pure Leaf",
+      "Pure Leaf",
+      "Pure Leaf"
+    ],
+    [
+      "Liquid Death",
+      "Minute Made",
+      "Minute Made",
+      "Minute Made",
+      "Minute Made",
+      "Minute Made",
+      "Minute Made",
+      "Minute Made",
+      "Unknown",
+      "Unknown"
+    ],
+    [
+      "Arnold Palmer",
+      "Arnold Palmer",
+      "Arnold Palmer",
+      "Arnold Palmer",
+      "Arizona",
+      "Arizona",
+      "Arizona",
+      "Arizona",
+      "Arizona"
+    ],
+    [
+      "Arizona",
+      "Arizona",
+      "Arizona",
+      "Arizona",
+      "Unknown",
+      "Unknown",
+      "Arizona",
+      "Arizona",
+      "Arizona"
+    ],
+    [
+      "Unknown",
+      "Unknown",
+      "Unknown",
+      "Arizona",
+      "Arizona",
+      "Arizona",
+      "Arizona",
+      "Arizona",
+      "Arizona"
+    ]
+  ],
+  "correctBrands8": [
+    [
+      "Sprite",
+      "Coca Cola",
+      "Coca Cola",
+      "Unknown",
+      "Coca Cola",
+      "Coca Cola",
+      "Pepsi",
+      "Unknown",
+      "Unknown"
+    ],
+    [
+      "A&W",
+      "A&W",
+      "Mountain Dew",
+      "Mountain Dew",
+      "Mountain Dew",
+      "Mountain Dew",
+      "Mountain Dew",
+      "Mountain Dew",
+      "Mountain Dew"
+    ],
+    [
+      "Starry",
+      "Starry",
+      "Pepsi",
+      "Pepsi",
+      "Pepsi",
+      "Pepsi",
+      "Pepsi",
+      "Pepsi",
+      "Pepsi"
+    ],
+    [
+      "Liquid Death",
+      "Minute Made",
+      "Minute Made",
+      "Minute Made",
+      "Minute Made",
+      "Minute Made",
+      "Minute Made",
+      "Minute Made",
+      "Unknown",
+      "Unknown"
+    ],
+    [
+      "Coca Cola",
+      "Coca Cola",
+      "Coca Cola",
+      "Coca Cola",
+      "Coca Cola",
+      "Coca Cola",
+      "Unknown",
+      "Unknown",
+      "Unknown"
+    ],
+    [
+      "Unknown",
+      "Coca Cola",
+      "Coca Cola",
+      "Coca Cola",
+      "Coca Cola",
+      "Canada Dry",
+      "Canada Dry",
+      "Canada Dry",
+      "Canada Dry"
+    ],
+    [
+      "Barqs",
+      "Fanta",
+      "Fanta",
+      "Unknown",
+      "Dr Pepper",
+      "Dr Pepper",
+      "Dr Pepper",
+      "Dr Pepper",
+      "Dr Pepper"
+    ],
+    [
+      "Unknown",
+      "Unknown",
+      "Pepsi",
+      "Pepsi",
+      "Coca Cola",
+      "Coca Cola",
+      "Coca Cola",
+      "Coca Cola",
+      "Coca Cola"
+    ]
+  ],
+  "correctBrands9": [
+    [
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Unknown",
+      "Electrolit",
+      "Electrolit",
+      "Electrolit"
+    ],
+    [
+      "Body Armor",
+      "Body Armor",
+      "Body Armor",
+      "Body Armor",
+      "Body Armor",
+      "Body Armor",
+      "Replenish",
+      "Replenish"
+    ],
+    [
+      "Replenish",
+      "Replenish",
+      "Replenish",
+      "Replenish",
+      "Replenish",
+      "Replenish",
+      "Unknown",
+      "Unknown"
+    ],
+    [
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade"
+    ],
+    [
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade"
+    ],
+    [
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade"
+    ],
+    [
+      "Powerade",
+      "Powerade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade",
+      "Gatorade"
+    ]
+  ],
+  "correctBrands10": [
+    [
+      "Unknown",
+      "Unknown",
+      "Angry Orchard",
+      "Angry Orchard",
+      "Angry Orchard"
+    ],
+    [
+      "Voodoo Ranger",
+      "Unknown",
+      "Fat Tire",
+      "Voodoo Ranger",
+      "Voodoo Ranger"
+    ],
+    [
+      "Sierra Nevada",
+      "Sierra Nevada",
+      "Sierra Nevada",
+      "Sierra Nevada",
+      "Sierra Nevada"
+    ],
+    [
+      "Southern Tier",
+      "Heineken",
+      "Yuengling",
+      "Samual Adams",
+      "Peroni"
+    ]
+  ],
+  "correctBrands11": [
+    [
+      "Fiji",
+      "Fiji",
+      "Liquid Death",
+      "Liquid Death",
+      "Aquafina",
+      "Poland Spring",
+      "Pure Life"
+    ],
+    [
+      "Smart Water",
+      "Propel",
+      "Voss",
+      "Poland Spring",
+      "Life Water",
+      "Smart Water",
+      "Path"
+    ],
+    [
+      "Smart Water",
+      "Smart Water",
+      "Smart Water",
+      "Fiji",
+      "Fiji",
+      "Action"
+    ],
+    [
+      "Poland Spring",
+      "Poland Spring",
+      "Poland Spring",
+      "Poland Spring",
+      "Poland Spring",
+      "Poland Spring"
+    ]
   ]
 }
