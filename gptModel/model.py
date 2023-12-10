@@ -93,8 +93,7 @@ def encode_images_in_directory(directory_path):
         if os.path.isfile(image_path) and is_image(filename):
             # Encode the image
             encoded_image = encode_image(image_path)
-            if (image_path == "../photos/drinks2.png"):
-              encoded_images.append((image_path, encoded_image))
+            encoded_images.append((image_path, encoded_image))
     return encoded_images
 
 def is_image(filename):
