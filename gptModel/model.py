@@ -12,7 +12,7 @@ load_dotenv(dotenv_path="../.env")
 
 
 # Constants
-IMG_PATH = '../photos'
+IMG_PATH = '../photosv2'
 CORRECT_DATA_JSON='../data/correct.json'
 IMAGE_CORR_DATA_JSON='../data/imageCorr.json'
 EVALUATION_CSV='../evaluation.csv'
@@ -28,11 +28,16 @@ def encode_image(image_path):
 
  
 
-def getOpenAiAssessment(img):
+def getOpenAiAssessment(img, parameterized=(None, None)):
   headers = {
       "Content-Type": "application/json",
       "Authorization": f"Bearer {api_key}"
   }
+
+  x, y = parameterized
+
+
+  systemPrompt = f"You're looking for a {x}x{y} matrix (array of arrays) format for the brands of drinks. Do not output any text besides the matrix itself." if x else "You're looking for a matrix (array of arrays) format for the brands of drinks. Do not output any text besides the matrix itself. Each array in the matrix should be a row of the vending machine with each element in the array being the brand of the drink as a string."
 
   payload = {
       "model": "gpt-4-vision-preview",
@@ -54,7 +59,7 @@ def getOpenAiAssessment(img):
         },
         {
           "role": "system",
-          "content": "You're looking for a matrix (array of arrays) format for the brands of drinks. Do not output any text besides the matrix itself."
+          "content": systemPrompt
         },
       ],
       "max_tokens": 300,
@@ -174,7 +179,7 @@ def calculate_set_accuracy(set1, set2):
     return accuracy
 
 
-def analyzeImages(path):
+def analyzeImages(path, parameterized=False):
     imageArr = encode_images_in_directory(path)
     correct_dict, image_corr_dict = getData()
 
@@ -185,11 +190,17 @@ def analyzeImages(path):
         correct_matrix = correct_dict[correct_key]
 
         # Get the matrix from the API response
-        brandMatrix = extract_matrix(getOpenAiAssessment(imgData))
-
         bounds = image_corr_dict[image_path]["bounds"]
         width = bounds["x2"] - bounds["x1"]
         height = bounds["y2"] - bounds["y1"]
+
+        brandMatrix = [[]]
+        if (parameterized):
+            brandMatrix = extract_matrix(getOpenAiAssessment(imgData, parameterized=(width, height)))
+        else:
+            brandMatrix = extract_matrix(getOpenAiAssessment(imgData))
+        
+
         correctMatrixAdj = correct_matrix[bounds["y1"]:bounds["y2"]][bounds["x1"]:bounds["x2"]]
 
         fuzzyScore, fuzzyCorrect, fuzzyIncorrect = calculate_combined_accuracy(correctMatrixAdj, brandMatrix, DISTANCE_THRESHOLD)
@@ -199,21 +210,23 @@ def analyzeImages(path):
         observed_brands = {element for row in brandMatrix for element in row}
 
         evaluationData = {
-            "img": image_path,
-            "model_type": "GPT-4",
-            "accuracy": score,
-            "fuzzy_accuracy": fuzzyScore,
-            "position_agnostic_accuracy": calculate_set_accuracy(correct_brands, observed_brands),
-            "vending_machine_type": correct_key,
-            "onAngle": "TODO",
-            "incorrect brands": incorrect,
-            "correct brands": correct,
-            "fuzzy_correct": fuzzyCorrect,
-            "fuzzy_incorrect": fuzzyIncorrect,
-            "brand matrix": brandMatrix
+            "Path": image_path,
+            "Model": "GPT-4",
+            "Accuracy": score,
+            "Fuzzy Accuracy": fuzzyScore,
+            "Position Agnostic Accuracy": calculate_set_accuracy(correct_brands, observed_brands),
+            "Vending Machine Type": correct_key,
+            "On Angle": "TODO",
+            "Incorrect Brands": incorrect,
+            "Correct Brands": correct,
+            "Fuzzy Correct Brands": fuzzyCorrect,
+            "Fuzzy Incorrect Brands": fuzzyIncorrect,
+            "Brand Matrix": brandMatrix,
+            "Parametrized": parameterized,
         }
 
         addEvaluation(evaluationData)
 
 
 analyzeImages(IMG_PATH)
+analyzeImages(IMG_PATH, parameterized=True)
