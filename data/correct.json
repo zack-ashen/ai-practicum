@@ -37,6 +37,7 @@
       "Starbucks",
       "Starbucks",
       "Starbucks",
+      "Starbucks",
       "Starbucks"
     ],
     [
@@ -47,10 +48,22 @@
       "Pure Leaf",
       "Pure Leaf",
       "Pure Leaf",
+      "Pure Leaf",
       "Pure Leaf"
     ],
-    ["Dole", "Dole", "Dole", "Dole", "Dole", "Dole", "Dole", "Dole"],
     [
+      "Dole",
+      "Dole",
+      "Dole",
+      "Dole",
+      "Dole",
+      "Dole",
+      "Lipton",
+      "Lipton",
+      "Lipton"
+    ],
+    [
+      "Gatorade",
       "Gatorade",
       "Gatorade",
       "Gatorade",
@@ -103,6 +116,7 @@
       "Mountain Dew",
       "Mountain Dew",
       "Mountain Dew",
+      "Mountain Dew",
       "Mountain Dew"
     ],
     [
@@ -110,8 +124,8 @@
       "Kickstart",
       "Kickstart",
       "Kickstart",
-      "Unknown",
-      "Unknown",
+      "Sierra Mist",
+      "Sierra Mist",
       "LIFE WTR",
       "LIFE WTR",
       "LIFE WTR"
@@ -129,11 +143,46 @@
     ]
   ],
   "correctBrands4": [
-    ["Unknown", "Unknown", "Unknown", "Doritos", "Smartfood", "Ridges"],
-    ["Cheetos", "Fritos", "Doritos", "Lays", "Ruffles", "Sun Chips"],
-    ["Kit Kat", "Pop Tart", "Grandma", "Cheez It", "Chips Ahoy", "Unknown"],
-    ["Hersheys", "Chex", "Unknown", "Combos", "Pretzel Crisps", "Chex"],
-    ["Nerds", "Swedish Fish", "Twizzler", "Sour Patch", "Haribo", "Jack Links"],
+    [
+      "Unknown",
+      "Unknown",
+      "Unknown",
+      "Doritos",
+      "Smartfood",
+      "Ridges"
+    ],
+    [
+      "Cheetos",
+      "Fritos",
+      "Doritos",
+      "Lays",
+      "Ruffles",
+      "Sun Chips"
+    ],
+    [
+      "Kit Kat",
+      "Pop Tart",
+      "Grandma",
+      "Cheez It",
+      "Chips Ahoy",
+      "Unknown"
+    ],
+    [
+      "Hersheys",
+      "Chex",
+      "Unknown",
+      "Combos",
+      "Pretzel Crisps",
+      "Chex"
+    ],
+    [
+      "Nerds",
+      "Swedish Fish",
+      "Twizzler",
+      "Sour Patch",
+      "Haribo",
+      "Jack Links"
+    ],
     [
       "M & M",
       "Reeses",

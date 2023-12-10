@@ -313,5 +313,23 @@
       "x2": 5,
       "y2": 4
     }
+  },
+  "../photos/RealLife.png": {
+    "correct": "correctBrands3",
+    "bounds": {
+      "x1": 0,
+      "y1": 0,
+      "x2": 8,
+      "y2": 4
+    }
+  },
+  "../photos/Starbucks.png": {
+    "correct": "correctBrands2",
+    "bounds": {
+      "x1": 0,
+      "y1": 0,
+      "x2": 8,
+      "y2": 4
+    }
   }
 }
