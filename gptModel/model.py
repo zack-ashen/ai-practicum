@@ -47,7 +47,7 @@ def getOpenAiAssessment(img, parameterized=(None, None)):
           "content": [
             {
               "type": "text",
-              "text": "This is a picture of a cooler with drinks in it. It has multiple rows. Send back a matrix array of the brands of the drinks in the cooler. If you are not confident in a particular brand you should just qualify it as 'Unknown'. Do not output the specific type of drink, but rather the brand that makes the drink."
+              "text": "This is a picture of a cooler with drinks in it. It has multiple rows. Send back a matrix array of the brands of the drinks in the cooler. If you are not confident in a particular brand look at the drinks in the same row and see if they look similar. Don't look in different rows. If you can identify one, it may be the case that the bottle you can't identify is the same as the one next to it. Do not output the specific type of drink, but rather the brand that makes the drink."
             },
             {
               "type": "image_url",
