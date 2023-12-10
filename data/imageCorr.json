@@ -1,344 +1,74 @@
 {
-  "../photos2/image2.png": {
-    "correct": "correctBrands2",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 6,
-      "y2": 1
-    }
-  },
-  "../photos/drinks2.png": {
+  "../photosv2/drinks2.png": {
     "correct": "correctBrands1",
     "bounds": {
       "x1": 0,
       "y1": 0,
       "x2": 6,
-      "y2": 1
-    }
-  },
-  "../photos/IMG_2623.png": {
-    "correct": "correctBrands2",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 4
-    }
-  },
-  "../photos/IMG_2628.png": {
-    "correct": "correctBrands3",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 1
-    }
-  },
-  "../photos/IMG_2638.png": {
-    "correct": "correctBrands2",
-    "bounds": {
-      "x1": 1,
-      "y1": 0,
-      "x2": 8,
       "y2": 2
     }
   },
-  "../photos/IMG_2639.png": {
-    "correct": "correctBrands2",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 3
-    }
-  },
-  "../photos/IMG_2640.png": {
-    "correct": "correctBrands2",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 3
-    }
-  },
-  "../photos/IMG_2641.png": {
-    "correct": "correctBrands2",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 3
-    }
-  },
-  "../photos/IMG_2642.png": {
-    "correct": "correctBrands2",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 3
-    }
-  },
-  "../photos/IMG_2643.png": {
-    "correct": "correctBrands2",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 4
-    }
-  },
-  "../photos/IMG_2644.png": {
-    "correct": "correctBrands2",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 4
-    }
-  },
-  "../photos/IMG_2645.png": {
-    "correct": "correctBrands2",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 4
-    }
-  },
-  "../photos/IMG_2646.png": {
-    "correct": "correctBrands2",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 4
-    }
-  },
-  "../photos/IMG_2647.png": {
-    "correct": "correctBrands2",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 4
-    }
-  },
-  "../photos/IMG_2648.png": {
-    "correct": "correctBrands2",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 4
-    }
-  },
-  "../photos/IMG_2649.png": {
-    "correct": "correctBrands2",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 4
-    }
-  },
-  "../photos/IMG_2660.png": {
-    "correct": "correctBrands2",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 4
-    }
-  },
-  "../photos/IMG_2661.png": {
-    "correct": "correctBrands2",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 4
-    }
-  },
-  "../photos/IMG_2663.png": {
-    "correct": "correctBrands2",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 4
-    }
-  },
-  "../photos/IMG_2664.png": {
-    "correct": "correctBrands2",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 4
-    }
-  },
-  "../photos/IMG_2624.png": {
-    "correct": "correctBrands3",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 3
-    }
-  },
-  "../photos/IMG_2625.png": {
-    "correct": "correctBrands3",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 3
-    }
-  },
-  "../photos/IMG_2626.png": {
-    "correct": "correctBrands3",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 7,
-      "y2": 2
-    }
-  },
-  "../photos/IMG_2627.png": {
-    "correct": "correctBrands3",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 5,
-      "y2": 1
-    }
-  },
-  "../photos/IMG_2629.png": {
-    "correct": "correctBrands3",
-    "bounds": {
-      "x1": 1,
-      "y1": 0,
-      "x2": 8,
-      "y2": 1
-    }
-  },
-  "../photos/IMG_2631.png": {
-    "correct": "correctBrands3",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 5,
-      "y2": 2
-    }
-  },
-  "../photos/IMG_2632.png": {
-    "correct": "correctBrands3",
-    "bounds": {
-      "x1": 2,
-      "y1": 0,
-      "x2": 8,
-      "y2": 2
-    }
-  },
-  "../photos/IMG_2633.png": {
-    "correct": "correctBrands3",
-    "bounds": {
-      "x1": 3,
-      "y1": 0,
-      "x2": 8,
-      "y2": 2
-    }
-  },
-  "../photos/IMG_2635.png": {
-    "correct": "correctBrands3",
-    "bounds": {
-      "x1": 3,
-      "y1": 0,
-      "x2": 8,
-      "y2": 2
-    }
-  },
-  "../photos/IMG_2637.png": {
-    "correct": "correctBrands3",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 2
-    }
-  },
-  "../photos/IMG_2653.png": {
-    "correct": "correctBrands4",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 5,
-      "y2": 4
-    }
-  },
-  "../photos/IMG_2652.png": {
-    "correct": "correctBrands4",
-    "bounds": {
-      "x1": 1,
-      "y1": 0,
-      "x2": 5,
-      "y2": 4
-    }
-  },
-  "../photos/IMG_2651.png": {
-    "correct": "correctBrands4",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 5,
-      "y2": 4
-    }
-  },
-  "../photos/IMG_2650.png": {
-    "correct": "correctBrands4",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 5,
-      "y2": 4
-    }
-  },
-  "../photos/IMG_2678.png": {
-    "correct": "correctBrands4",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 5,
-      "y2": 4
-    }
-  },
-  "../photos/RealLife.png": {
-    "correct": "correctBrands3",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 4
-    }
-  },
-  "../photos/Starbucks.png": {
-    "correct": "correctBrands2",
-    "bounds": {
-      "x1": 0,
-      "y1": 0,
-      "x2": 8,
-      "y2": 4
-    }
-  },
-  "../ophotos/711_Beer.png": {
+  "../photosv2/711_Beer.png": {
     "correct": "correctBrands6",
     "bounds": {
       "x1": 0,
       "y1": 0,
-      "x2": 4,
+      "x2": 10,
       "y2": 4
+    }
+  },
+  "../photosv2/711_Juice.png": {
+    "correct": "correctBrands7",
+    "bounds": {
+      "x1": 0,
+      "y1": 0,
+      "x2": 8,
+      "y2": 6
+    }
+  },
+  "../photosv2/711_Sodas_Stickers.png": {
+    "correct": "correctBrands8",
+    "bounds": {
+      "x1": 0,
+      "y1": 0,
+      "x2": 7,
+      "y2": 6
+    }
+  },
+  "../photosv2/711_Sodas.png": {
+    "correct": "correctBrands9",
+    "bounds": {
+      "x1": 0,
+      "y1": 0,
+      "x2": 8,
+      "y2": 6
+    }
+  },
+  "../photosv2/IMG_2623.png": {
+    "correct": "correctBrands2",
+    "bounds": {
+      "x1": 0,
+      "y1": 0,
+      "x2": 8,
+      "y2": 4
+    }
+  },
+  "../photosv2/Jasons_Beer.png": {
+    "correct": "correctBrands10",
+    "bounds": {
+      "x1": 0,
+      "y1": 0,
+      "x2": 4,
+      "y2": 3
+    }
+  },
+  "../photosv2/Jasons_Water.png": {
+    "correct": "correctBrands11",
+    "bounds": {
+      "x1": 0,
+      "y1": 0,
+      "x2": 6,
+      "y2": 3
     }
   }
 }
