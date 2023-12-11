@@ -1,68 +1,86 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import seaborn as sns
 from scipy import stats
+from scipy.stats import sem
 
-# Load the CSV data
-file_path = 'evaluation.csv'  # assuming the file is in the current working directory
-data = pd.read_csv(file_path)
+df = pd.read_csv("./evaluation2.csv")
 
-# Prepare data for analysis
-# 1. Filter data for parameterized vs non-parameterized comparison
-param_data = data[data['Parametrized'] == True]
-non_param_data = data[data['Parametrized'] == False]
+# 1. Average accuracy
+mean_accuracy = df['Accuracy'].mean()
+std_accuracy = df['Accuracy'].std()
+print(f"Mean Accuracy: {mean_accuracy}, Standard Deviation: {std_accuracy}")
 
-# Group by 'Path' since we need to compare the same images
-param_grouped = param_data.groupby('Path')['Accuracy'].mean()
-non_param_grouped = non_param_data.groupby('Path')['Accuracy'].mean()
+# 2. Average fuzzy accuracy
+mean_fuzzy_accuracy = df['Fuzzy Accuracy'].mean()
+std_fuzzy_accuracy = df['Fuzzy Accuracy'].std()
+print(f"Mean Fuzzy Accuracy: {mean_fuzzy_accuracy}, Standard Deviation: {std_fuzzy_accuracy}")
 
-# For paired t-test, we need to ensure both groups have the same images
-common_paths = param_grouped.index.intersection(non_param_grouped.index)
-param_grouped = param_grouped[common_paths]
-non_param_grouped = non_param_grouped[common_paths]
+# 3. Average Jaccard accuracy
+mean_jaccard_accuracy = df['Jaccard Accuracy'].mean()
+std_jaccard_accuracy = df['Jaccard Accuracy'].std()
+print(f"Mean Jaccard Accuracy: {mean_jaccard_accuracy}, Standard Deviation: {std_jaccard_accuracy}")
 
-# 2. Paired t-test for parameterized vs non-parameterized
-param_vs_non_param_ttest = stats.ttest_rel(param_grouped, non_param_grouped)
+# 4. Average accuracy for '../photosv2/drinks2.png' and its p-value
+drinks2_accuracy = df[df['Path'] == '../photosv2/drinks2.png']['Accuracy']
+not_drinks2_accuracy = df[df['Path'] != '../photosv2/drinks2.png']['Accuracy']
+mean_drinks2_accuracy = drinks2_accuracy.mean()
+t_stat_drinks2, p_val_drinks2 = stats.ttest_1samp(drinks2_accuracy, not_drinks2_accuracy.mean())
+print(f"Drinks 2 Image Accuracy: {drinks2_accuracy.mean()}, p-value: {p_val_drinks2} \n")
 
-# 3. Paired t-test for fuzzy accuracy vs accuracy
-paired_ttest_fuzzy_accuracy = stats.ttest_rel(data['Accuracy'], data['Fuzzy Accuracy'])
+# 5. Average accuracy based on Parametrized value and its p-value
+accuracy_param_false = df[df['Parametrized'] == False]['Accuracy']
+accuracy_param_true = df[df['Parametrized'] == True]['Accuracy']
+mean_acc_param_false = accuracy_param_false.mean()
+mean_acc_param_true = accuracy_param_true.mean()
+t_stat_param, p_val_param = stats.ttest_ind(accuracy_param_false, accuracy_param_true)
+print(f"Average Accuracy for Parametrized=False: {mean_acc_param_false}")
+print(f"Average Accuracy for Parametrized=True: {mean_acc_param_true}")
+print(f"p-value for Parametrized=False vs Parametrized=True: {p_val_param} \n")
 
-# 4. Average and variance of accuracy
-average_accuracy = data['Accuracy'].mean()
-variance_accuracy = data['Accuracy'].var()
+# Obstruction Test
+obstruction_accuracy = df[df['Path'].isin(['../photosv2/711_Sodas_Stickers.png', '../photosv2/711_Juice.png', '../photosv2/711_Sodas.png'])]['Accuracy']
+not_obstruction_accuracy = df[~df['Path'].isin(['../photosv2/711_Sodas_Stickers.png', '../photosv2/711_Juice.png', '../photosv2/711_Sodas.png'])]['Accuracy']
+mean_obstruction_accuracy = obstruction_accuracy.mean()
+t_stat_obstruction, p_val_obstruction = stats.ttest_ind(obstruction_accuracy, not_obstruction_accuracy)
+print(f"Obstruction Accuracy: {obstruction_accuracy.mean()}, p-value: {p_val_obstruction} \n Not Obstruction Accuracy: {not_obstruction_accuracy.mean()}")
+mean_obst_accuracies = [not_obstruction_accuracy.mean(), obstruction_accuracy.mean()]
+labels = ['Obstructed=False', 'Obstructed=True']
 
-# 5. Bar graph for fuzzy accuracy vs accuracy
-accuracy_means = data[['Accuracy', 'Fuzzy Accuracy']].mean()
-accuracy_sems = data[['Accuracy', 'Fuzzy Accuracy']].sem()
+# Adding error bars to the graph for Parametrized values
+std_obs_param_false = not_obstruction_accuracy.std()
+std_obs_param_true = obstruction_accuracy.std()
 
-# 6. Bar graph for average accuracy (parameterized vs non-parameterized)
-param_accuracy_mean = param_data['Accuracy'].mean()
-non_param_accuracy_mean = non_param_data['Accuracy'].mean()
-param_accuracy_sem = param_data['Accuracy'].sem()
-non_param_accuracy_sem = non_param_data['Accuracy'].sem()
-
-# Plotting bar graphs
-plt.figure(figsize=(14, 6))
-
-# Fuzzy Accuracy vs Accuracy
-plt.subplot(1, 2, 1)
-accuracy_sems = accuracy_sems.values.flatten()
-accuracy_sems = data[['Accuracy', 'Fuzzy Accuracy']].sem()
-sns.barplot(x=accuracy_means.index, y=accuracy_means.values, yerr=accuracy_sems.values, capsize=7)
-plt.title('Fuzzy Accuracy vs Accuracy')
-plt.ylabel('Mean Accuracy')
-
-# Parameterized vs Non-Parameterized Accuracy
-plt.subplot(1, 2, 2)
-means_param = [param_accuracy_mean, non_param_accuracy_mean]
-errors_param = [param_accuracy_sem, non_param_accuracy_sem]
-sns.barplot(x=['Parameterized', 'Non-Parameterized'], y=means_param, yerr=errors_param)
-plt.title('Parameterized vs Non-Parameterized Accuracy')
-plt.ylabel('Mean Accuracy')
-
-plt.tight_layout()
+plt.bar(labels, mean_obst_accuracies, yerr=[sem(not_obstruction_accuracy), sem(obstruction_accuracy)], capsize=5)
+plt.xlabel('Obstruction')
+plt.ylabel('Average Accuracy')
+plt.title('Average Accuracy Comparison by Obstruction')
 plt.show()
 
-# Returning statistical test results and calculated metrics
-print(param_vs_non_param_ttest, paired_ttest_fuzzy_accuracy, average_accuracy, variance_accuracy)
+
+# 6. Bar graph of average accuracy for Parametrized values
+mean_accuracies = [mean_acc_param_false, mean_acc_param_true]
+labels = ['Parametrized=False', 'Parametrized=True']
+
+# Adding error bars to the graph for Parametrized values
+std_acc_param_false = accuracy_param_false.std()
+std_acc_param_true = accuracy_param_true.std()
+
+plt.bar(labels, mean_accuracies, yerr=[sem(accuracy_param_false), sem(accuracy_param_true)], capsize=5)
+plt.xlabel('Parametrized')
+plt.ylabel('Average Accuracy')
+plt.title('Average Accuracy Comparison by Parametrization')
+plt.show()
+
+# Creating a bar graph comparing average accuracy, average fuzzy accuracy, and average jaccard accuracy
+mean_values = [mean_accuracy, mean_fuzzy_accuracy, mean_jaccard_accuracy]
+sem_values = [sem(df['Accuracy']), sem(df['Fuzzy Accuracy']), sem(df['Jaccard Accuracy'])]
+comparison_labels = ['Average Accuracy', 'Average Fuzzy Accuracy', 'Average Jaccard Accuracy']
+
+plt.bar(comparison_labels, mean_values, yerr=sem_values, capsize=5)
+plt.ylabel('Average Value')
+plt.title('Comparison of Different Accuracy Metrics')
+plt.show()
+
+f_statistic, accuracy_p_value = stats.f_oneway(df['Accuracy'], df['Fuzzy Accuracy'], df['Jaccard Accuracy'])
+print(f"p-value for Accuracy vs Fuzzy Accuracy vs Jaccard Accuracy: {accuracy_p_value} \n")
