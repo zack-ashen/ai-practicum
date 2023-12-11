@@ -3,6 +3,7 @@ import json
 import os
 import re
 
+import numpy as np
 import pandas as pd
 import requests
 from dotenv import load_dotenv
@@ -15,7 +16,7 @@ load_dotenv(dotenv_path="../.env")
 IMG_PATH = '../photosv2'
 CORRECT_DATA_JSON='../data/correct.json'
 IMAGE_CORR_DATA_JSON='../data/imageCorr.json'
-EVALUATION_CSV='../evaluation.csv'
+EVALUATION_CSV='../evaluation2.csv'
 DISTANCE_THRESHOLD = 5
 
 # Initialize API client
@@ -50,7 +51,9 @@ def getOpenAiAssessment(img, parameterized=(None, None)):
               "text": "Please analyze the image of the vending machine and output a matrix. \
                         The matrix should consist of arrays representing each row of products \
                         in the vending machine. Each array should contain strings of the brand names visible in \
-                        that row in the position they appear from left to right. If there is nothing in a vending machine slot put 'Unknown' in that position. In addition, if you don't know a brand name, put 'Unknown' in that position."
+                        that row in the position they appear from left to right. If there is nothing in a vending machine slot put 'Unknown' in that position.\
+                        In addition, if you don't know a brand name, put 'Unknown' in that position. \
+                        Each array should be the same length as the number of columns in the vending machine. If you don't know the number of columns, put 'Unknown' in that position."
             },
             {
               "type": "image_url",
@@ -142,44 +145,42 @@ def addEvaluation(evaluationData):
     # Save the updated data back to the CSV file
     data.to_csv(EVALUATION_CSV, index=False)
 
-def calculate_combined_accuracy(ground_truth, predictions, threshold=None):
-    # Flatten both lists
-    flat_ground_truth = [item for sublist in ground_truth for item in sublist]
-    flat_predictions = [item for sublist in predictions for item in sublist]
+def accuracy(correct_matrix, brand_matrix, fuzzy=False):
+    accuracyMap = {}
 
-    correct_predictions = []
-    incorrect_predictions = []
+    totalBrands = 0
+    for i in range(len(correct_matrix)):
+        for j in range(len(correct_matrix[i])):
+            correct_brand = correct_matrix[i][j]
+            totalBrands += 1
 
-    # Calculate matches (True Positives) and mismatches
-    for gt_item, pred_item in zip(flat_ground_truth, flat_predictions):
-        # Apply fuzzy matching if a threshold is provided
-        if threshold is not None:
-            if distance(gt_item.lower(), pred_item.lower()) <= threshold:
-                correct_predictions.append(pred_item)
-            else:
-                incorrect_predictions.append(pred_item)
-        # Apply strict matching if no threshold is provided
-        else:
-            if gt_item == pred_item:
-                correct_predictions.append(pred_item)
-            else:
-                incorrect_predictions.append(pred_item)
+            if (i, j) not in accuracyMap:
+                accuracyMap[(i, j)] = correct_brand
+    
+    correct = 0
+    correct_brands = set()
+    incorrect_brands = set()
+    for i in range(len(brand_matrix)):
+        for j in range(len(brand_matrix[i])):
+            brand = brand_matrix[i][j]
+            if (i, j) in accuracyMap:
+                correct_brand = accuracyMap[(i, j)]
+                if (fuzzy and distance(correct_brand, brand) <= DISTANCE_THRESHOLD) or (not fuzzy and correct_brand == brand):
+                    correct_brands.add(correct_brand)
+                    correct += 1
+                else:
+                    incorrect_brands.add(correct_brand)
 
-    # Total items considered
-    total_items = len(flat_ground_truth)
-
-    # Calculate accuracy
-    accuracy = len(correct_predictions) / total_items
-    return accuracy, set(correct_predictions), set(incorrect_predictions)
+    return (correct / totalBrands), correct_brands, incorrect_brands
 
 def calculate_set_accuracy(set1, set2):
-    # Calculate the intersection and union of the sets
-    intersection = set1.intersection(set2)
-    union = set1.union(set2)
+    intersection = len(set1.intersection(set2))
+    union = (len(set1) + len(set2)) - intersection
+    return float(intersection) / union
 
-    # Calculate the accuracy
-    accuracy = len(intersection) / len(union) if union else 0
-    return accuracy
+
+def matrix_to_list(matrix):
+    return {item for sublist in matrix for item in sublist}
 
 
 def analyzeImages(path, parameterized=False):
@@ -206,24 +207,25 @@ def analyzeImages(path, parameterized=False):
 
         correctMatrixAdj = correct_matrix[bounds["y1"]:bounds["y2"]][bounds["x1"]:bounds["x2"]]
 
-        fuzzyScore, fuzzyCorrect, fuzzyIncorrect = calculate_combined_accuracy(correctMatrixAdj, brandMatrix, DISTANCE_THRESHOLD)
-        score, correct, incorrect = calculate_combined_accuracy(correctMatrixAdj, brandMatrix)
+        fuzzyScore, fuzzyCorrect, fuzzyIncorrect = accuracy(correctMatrixAdj, brandMatrix, True)
+        score, correct, incorrect = accuracy(correctMatrixAdj, brandMatrix)
 
-        correct_brands = {element for row in correctMatrixAdj for element in row}
-        observed_brands = {element for row in brandMatrix for element in row}
+        correct_brands = matrix_to_list(correctMatrixAdj)
+        observed_brands = matrix_to_list(brandMatrix)
+
+
 
         evaluationData = {
             "Path": image_path,
             "Model": "GPT-4",
             "Accuracy": score,
             "Fuzzy Accuracy": fuzzyScore,
-            "Position Agnostic Accuracy": calculate_set_accuracy(correct_brands, observed_brands),
+            "Jaccard Accuracy": calculate_set_accuracy(correct_brands, observed_brands),
             "Vending Machine Type": correct_key,
-            "On Angle": "TODO",
-            "Incorrect Brands": incorrect,
-            "Correct Brands": correct,
-            "Fuzzy Correct Brands": fuzzyCorrect,
-            "Fuzzy Incorrect Brands": fuzzyIncorrect,
+            "Correct": correct,
+            "Incorrect": incorrect,
+            "Fuzzy Correct": fuzzyCorrect,
+            "Fuzzy Incorrect": fuzzyIncorrect,
             "Brand Matrix": brandMatrix,
             "Parametrized": parameterized,
         }
