@@ -16,7 +16,7 @@ IMG_PATH = '../photosv2'
 CORRECT_DATA_JSON='../data/correct.json'
 IMAGE_CORR_DATA_JSON='../data/imageCorr.json'
 EVALUATION_CSV='../evaluation.csv'
-DISTANCE_THRESHOLD = 3
+DISTANCE_THRESHOLD = 5
 
 # Initialize API client
 api_key = os.getenv("OPEN_API_KEY")
@@ -37,7 +37,7 @@ def getOpenAiAssessment(img, parameterized=(None, None)):
   x, y = parameterized
 
 
-  systemPrompt = f"You're looking for a {x}x{y} matrix (array of arrays) format for the brands of drinks. Do not output any text besides the matrix itself." if x else "You're looking for a matrix (array of arrays) format for the brands of drinks. Do not output any text besides the matrix itself. Each array in the matrix should be a row of the vending machine with each element in the array being the brand of the drink as a string."
+  systemPrompt = f"You're looking for a {x}x{y} matrix (array of arrays) format for the brands of drinks this implies there should be {x}*{y} brands or entries in the matrix. Do not output any text besides the matrix itself." if x else "You're looking for a matrix (array of arrays) format for the brands of items. Do not output any text besides the matrix itself. Each array in the matrix should be a row of the vending machine with each element in the array being the brand of the drink as a string."
 
   payload = {
       "model": "gpt-4-vision-preview",
@@ -47,7 +47,10 @@ def getOpenAiAssessment(img, parameterized=(None, None)):
           "content": [
             {
               "type": "text",
-              "text": "This is a picture of a cooler with drinks in it. It has multiple rows. Send back a matrix array of the brands of the drinks in the cooler. If you are not confident in a particular brand look at the drinks in the same row and see if they look similar. Don't look in different rows. If you can identify one, it may be the case that the bottle you can't identify is the same as the one next to it. Do not output the specific type of drink, but rather the brand that makes the drink."
+              "text": "Please analyze the image of the vending machine and output a matrix. \
+                        The matrix should consist of arrays representing each row of products \
+                        in the vending machine. Each array should contain strings of the brand names visible in \
+                        that row in the position they appear from left to right. If there is nothing in a vending machine slot put 'Unknown' in that position. In addition, if you don't know a brand name, put 'Unknown' in that position."
             },
             {
               "type": "image_url",
